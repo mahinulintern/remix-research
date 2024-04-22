@@ -22,4 +22,7 @@ In the context of Remix, which is primarily focused on server-rendered React app
 # What is remix theme?
 Certainly! In the context of **Remix**, a **theme** defines consistent styling and design choices for your web application. It includes aspects like fonts, colors, spacing, and component styles. By using themes, you can maintain a cohesive look and feel across your entire app. 🎨✨
 
+<br>
+
+In Remix, themes do not provide predefined styles out of the box. Instead, Remix encourages a co-located styling approach where you define styles alongside your components.
 
