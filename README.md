@@ -26,3 +26,59 @@ Certainly! In the context of **Remix**, a **theme** defines consistent styling a
 
 In Remix, themes do not provide predefined styles out of the box. Instead, Remix encourages a co-located styling approach where you define styles alongside your components.
 
+
+<br>
+<br>
+
+# Remix loader 
+```javascript
+import styles from "./styles.module.css";
+import Nav from "../../modules/nav";
+import { useLoaderData } from "@remix-run/react";
+
+
+export async function loader () {
+  /**
+   * I can create any type of console log 
+   * this loader function automatically run when remix renders first time
+   * It doesn't have to be called anywhere by myself
+   * remix takes this export and automatically import it somewhere 
+   * remix run it the first time the render happens
+   * it runs again when I hit this route.
+   */
+
+  try{
+    console.log('running loader')
+    const response = await fetch("https://reqres.in/api/users?page=2");
+    const data = await response.json();
+    console.log(data);  
+    // console.log(response)
+    return json({data: "hello"});
+  }catch(err) {
+    console.log(err);
+  }
+ 
+
+  // if (!response.ok) {
+  //   throw new Error(`Failed to fetch data: ${response.statusText}`);
+  // }
+
+  // console.log(response);
+  // return json({data: "hello"});
+}
+
+export default function Contact() {
+  const data = useLoaderData();
+  console.log(data);
+  console.log("hello from contact page");
+  return(
+    <>
+    <Nav />
+    <h1 className={`${styles.h2} ${styles.customStyles}`}>Contact Page</h1>
+    </>
+  )
+
+}
+
+```
+
