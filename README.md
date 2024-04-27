@@ -119,10 +119,14 @@ export async function loader () {
       },
       body: JSON.stringify()
     });
+
     const data = await response.json(inputData);
     console.log(data);  
     return json({data: "hello"});
-  }catch(err) {
+
+  }
+
+catch(err) {
     console.log(err);
   }
 }
